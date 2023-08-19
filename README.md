@@ -1,4 +1,6 @@
-# Custom Dictionary - Java Project
+![juan-pablo-daniel-MvNfMRw3I5k-unsplash](https://github.com/RadmanHayati/ALP-JAVA/assets/72970748/23bb4a12-b813-4f65-b530-ea2d6d88b3cc)
+
+# ALP - Java Project
 
 ## Overview
 
