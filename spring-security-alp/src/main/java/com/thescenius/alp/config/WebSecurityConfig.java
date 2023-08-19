@@ -16,6 +16,7 @@ public class WebSecurityConfig {
     private static final String[] WHITE_LIST_URLS = {
             "/hello",
             "/register",
+            "verifyRegistration",
             "/verifyRegistration*",
             "/resendVerifyToken*"
     };
@@ -28,13 +29,14 @@ public class WebSecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(requests -> requests
-                        .requestMatchers(WHITE_LIST_URLS).permitAll()
-                        .anyRequest().authenticated())
+        http
                 .cors()
                 .and()
                 .csrf()
-                .disable();
+                .disable()
+                .authorizeHttpRequests()
+                .requestMatchers(WHITE_LIST_URLS).permitAll();
+
         return http.build();
     }
 
