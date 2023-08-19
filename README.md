@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Custom Dictionary is a Java-based application designed to help users save and learn new words. It provides a user-friendly interface and includes various features, such as word saving, dictionary lookup, and additional functionalities to enhance the learning experience.
+Alphabet Pack is a Java-based application designed to help users save and learn new words. It provides a user-friendly interface and includes various features, such as word saving, dictionary lookup, and additional functionalities to enhance the learning experience.
 
 📚 **Word Saving:** The application allows users to save words they want to learn. Users can add words, provide definitions, and add additional notes for each entry.
 
