@@ -49,4 +49,5 @@ Spring Boot Starter Web: Provides the necessary libraries and configurations for
 Spring Data JPA: Simplifies database operations and interaction with the MySQL database.
 Spring Security: Offers a robust security framework for securing the API endpoints.
 MySQL Connector/J: Provides the JDBC driver for connecting to the MySQL database.
-![juan-pablo-daniel-MvNfMRw3I5k-unsplash](https://github.com/RadmanHayati/ALP-JAVA/assets/72970748/84242328-417d-4ad2-b6bd-bc2258ccda78)
+
+![alp](https://github.com/RadmanHayati/ALP-JAVA/assets/72970748/84242328-417d-4ad2-b6bd-bc2258ccda78)
