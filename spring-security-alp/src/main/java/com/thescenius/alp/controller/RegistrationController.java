@@ -1,6 +1,7 @@
 package com.thescenius.alp.controller;
 
 import com.thescenius.alp.entity.User;
+import com.thescenius.alp.entity.VerificationToken;
 import com.thescenius.alp.event.RegistrationCompleteEvent;
 import com.thescenius.alp.model.UserModel;
 import com.thescenius.alp.service.UserService;
@@ -23,7 +24,7 @@ public class RegistrationController {
     @PostMapping("/register")
     public String registerUser(@RequestBody UserModel userModel, final HttpServletRequest request) {
         User user = userService.registerUser(userModel);
-        publisher.publishEvent(new RegistrationCompleteEvent(
+        publisher.publishEvent(new RegistrationCompleteEvent( // Event listener will generate and email the token
                 user,
                 applicationUrl(request)
         ));
@@ -38,6 +39,28 @@ public class RegistrationController {
         }
         return "Bad User";
     }
+
+    @GetMapping("/resendVerifyToken")
+    public String resendVerificationToken(@RequestBody UserModel DtoUser,
+                                          HttpServletRequest request) {
+        VerificationToken verificationToken = userService.generateNewVerificationToken(DtoUser.getEmail());
+        User user = verificationToken.getUser();
+        resendVerificationTokenMail(user, applicationUrl(request), verificationToken);
+        return "Verification Link Sent";
+    }
+
+
+    private void resendVerificationTokenMail(User user, String applicationUrl, VerificationToken verificationToken) {
+        String url =
+                applicationUrl
+                        + "/verifyRegistration?token="
+                        + verificationToken.getToken();
+
+        //sendVerificationEmail()
+        log.info("Click the link to verify your account: {}",
+                url);
+    }
+
 
 
     private String applicationUrl(HttpServletRequest request) {
