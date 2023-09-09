@@ -1,15 +1,15 @@
 package com.thescenius.alp.repository;
 
+import com.thescenius.alp.entity.PasswordResetToken;
 import com.thescenius.alp.entity.User;
 import com.thescenius.alp.entity.VerificationToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
-public interface VerificationTokenRepository extends JpaRepository<VerificationToken, Long> {
-    VerificationToken findByToken(String token);
+public interface PasswordRestTokenRepository extends JpaRepository<PasswordResetToken, Long> {
+    PasswordResetToken findByToken(String token);
 
-    VerificationToken findByUser(Optional<User> user);
+    PasswordResetToken findByUser(User user);
 }
+
