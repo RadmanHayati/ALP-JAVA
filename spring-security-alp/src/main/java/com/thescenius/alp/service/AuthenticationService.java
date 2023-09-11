@@ -2,6 +2,7 @@ package com.thescenius.alp.service;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.thescenius.alp.config.SecurityUtils;
 import com.thescenius.alp.entity.User;
 import com.thescenius.alp.entity.token.Token;
 import com.thescenius.alp.entity.token.TokenType;
@@ -12,6 +13,7 @@ import com.thescenius.alp.repository.TokenRepository;
 import com.thescenius.alp.repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,6 +25,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -123,4 +126,10 @@ public class AuthenticationService {
             }
         }
     }
+
+    public Optional<User> getUserWithAuthorities() {
+        return SecurityUtils.getCurrentUsername().flatMap(repository::findByEmail);
+    }
+
+
 }
