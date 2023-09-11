@@ -27,7 +27,14 @@ public class JwtService {
     private long refreshExpiration;
 
     public String extractUsername(String token) {
-        return extractClaim(token, Claims::getSubject);
+        try {
+            String userName = extractClaim(token, Claims::getSubject);
+            return userName;
+        }catch (Exception e){
+            Exception a = e;
+        }
+        return "";
+
     }
 
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {

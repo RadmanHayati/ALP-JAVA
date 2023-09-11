@@ -12,3 +12,11 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+---
+application:
+  security:
+    jwt:
+      secret-key: 8f689d7c2b2a3f1e4d5c6b7a8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f
+      expiration: 1440000
+      refresh-token:
+        expiration: 72000000
