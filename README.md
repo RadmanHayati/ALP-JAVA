@@ -1,4 +1,4 @@
-# ALP - Java Project
+# ALP - Project
 
 ## Overview
 
