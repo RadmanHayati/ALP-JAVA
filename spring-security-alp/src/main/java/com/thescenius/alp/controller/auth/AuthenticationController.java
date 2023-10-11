@@ -4,7 +4,7 @@ package com.thescenius.alp.controller.auth;
 import com.thescenius.alp.model.request.AuthenticationRequest;
 import com.thescenius.alp.model.request.RegisterRequest;
 import com.thescenius.alp.model.response.AuthenticationResponse;
-import com.thescenius.alp.service.AuthenticationService;
+import com.thescenius.alp.service.user.AuthenticationService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;

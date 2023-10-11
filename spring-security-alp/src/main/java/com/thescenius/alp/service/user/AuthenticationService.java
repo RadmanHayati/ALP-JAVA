@@ -1,4 +1,4 @@
-package com.thescenius.alp.service;
+package com.thescenius.alp.service.user;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -6,6 +6,7 @@ import com.thescenius.alp.config.SecurityUtils;
 import com.thescenius.alp.entity.User;
 import com.thescenius.alp.entity.token.Token;
 import com.thescenius.alp.entity.token.TokenType;
+import com.thescenius.alp.exceptions.UserNotFoundException;
 import com.thescenius.alp.model.request.AuthenticationRequest;
 import com.thescenius.alp.model.request.RegisterRequest;
 import com.thescenius.alp.model.response.AuthenticationResponse;
@@ -13,15 +14,12 @@ import com.thescenius.alp.repository.TokenRepository;
 import com.thescenius.alp.repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -127,8 +125,13 @@ public class AuthenticationService {
         }
     }
 
-    public Optional<User> getUserWithAuthorities() {
-        return SecurityUtils.getCurrentUsername().flatMap(repository::findByEmail);
+    public User getUserWithAuthorities() {
+        Optional<User> user = SecurityUtils.getCurrentUsername().flatMap(repository::findByEmail);
+        if (user.isPresent()) {
+            return user.get() ;
+        } else {
+            throw new UserNotFoundException("User not found");
+        }
     }
 
 

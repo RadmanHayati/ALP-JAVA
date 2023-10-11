@@ -2,7 +2,7 @@ package com.thescenius.alp.event.listener;
 
 import com.thescenius.alp.entity.User;
 import com.thescenius.alp.event.RegistrationCompleteEvent;
-import com.thescenius.alp.service.UserService;
+import com.thescenius.alp.service.user.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;

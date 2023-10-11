@@ -1,4 +1,4 @@
-package com.thescenius.alp.service;
+package com.thescenius.alp.service.user;
 
 
 import java.security.Key;
